@@ -1,0 +1,270 @@
+html {
+    font-size: 10.5px; /* 1em = 10px, 10/16 = 62.5% */
+}
+*{
+    margin:0;
+    padding:0;
+}
+
+.Waitlist-box{
+    color: black;
+    background-color: white;
+    width: 70vw;
+    height: max-content;
+    display: flex;
+    text-align: center; 
+    flex-direction: column;
+    align-items: center;
+    font-size: 2.4em; /* 24px */
+    padding: 1em 0;
+}
+
+.logo{
+    width:5em;
+    height:1.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    align-items: last baseline;
+    margin:0;
+    height:7em;
+}
+
+.fire-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:7em;
+    aspect-ratio: 1;
+  }
+  .fire-container .fire {
+    transform: scale(1.4);
+  }
+
+
+
+.box-title{
+    color: black;
+    margin:0 auto;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-weight: 1000;
+    letter-spacing: -0.04em; /* -2px */
+    font-size:2.3em; /* 56px */
+}
+
+.box-description{
+    width: 85%;;
+    color: rgba(125, 125, 125, 1);
+    margin: 0.6em; /* 6% */
+    font-family: "Nunito", sans-serif;
+    font-size: 0.88em; /* large */
+    text-align: center;
+    line-height: 1.1em;
+}
+
+.theme-font{
+    color: rgba(250, 0, 255, 1);
+}
+
+.Waitlist-content{
+    color: black;
+    text-align: center;
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: 800;
+    font-size: 1.45em; /* 36px */
+}
+
+
+.timer{
+    display: flex;
+    width: 40em; /* 400px */
+    position: inherit;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    padding:0.1em; /* 3px */
+    align-items: center;
+    justify-content: space-between;
+    width: 40%; 
+    height:2em; /* 40px */
+    background-color: #fff;
+    border-radius: 5em; /* 50px */
+    border: solid 0.075em black; /* 1px */
+    margin: 0 auto;
+}
+
+
+.email_input {
+    border: none;
+    outline: none;
+    border-radius: 1.5em; /* 45px */
+    padding: 0.05em; /* 5px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7em; /* 18px */
+    margin-left: 0.5em; /* 5px */   
+}
+.email_input::placeholder {
+    color: #8a8a8a;
+}
+.button {
+    background-color: #000;
+    font-family: "Inter", sans-serif;
+    font-size: 0.8em; /* 16px */
+    font-weight: 700;
+    width: 60%;
+    color: #fff;
+    border: none;
+    border-radius: 5em; /* 50px */
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8em 0.8em;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.button svg {
+    width: 1.5em; /* 20px */
+    height: 1.5em; /* 20px */   
+}
+
+.button:hover {
+    background-color:rgba(250, 0, 255, 1);
+    color: #ffffff;
+    transform: scale(0.95);
+}
+.button:active{
+    background-color:rgb(125, 5, 128);
+    transform: scale(0.85);
+
+}
+
+.user-count{
+    margin: 1em;
+    font-size: 0.9em;
+    font-family: "Cousine", monospace;
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 2em;;
+}
+.error{
+    font-size: 0.8em;
+    color: red;
+}
+
+@media screen and (max-width: 1500px) {
+    html {
+        font-size: 10px; /* 1em = 8px, 8/16 = 50% */
+    }
+    .Waitlist-box{
+        width: 80vw;
+    }
+}
+
+/* Media Query for tablet screens */
+@media screen and (max-width: 1200px) {
+    html {
+        font-size: 9px; /* 1em = 8px, 8/16 = 50% */
+    }
+    .Waitlist-box{
+        width: 80vw;
+    }
+}
+
+/* Media Query for tablet screens */
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 8px; /* 1em = 8px, 8/16 = 50% */
+    }
+    .Waitlist-box{
+        justify-content: space-between;
+    }
+    .header .box-title{
+        width: 80%;
+        font-size: 2em; /* 56px */
+    }
+    .box-description{
+        font-size: 0.7em;;
+    }
+    .container{
+        flex-direction: column;
+        border: none;
+        gap: 0.5em;
+        margin: 0 auto;;
+        height: max-content;
+        width: 80%;
+    }
+    .email_input{
+        width: 100%;
+        padding: 0.75em;
+        border: solid 0.075em black; /* 1px */
+        font-size: 1em;
+    }
+    .button{
+        width: 50%;
+        padding: 0.3em;
+        font-size: 0.9em;
+    }
+    .button svg{
+        width: 1em; /* 20px */
+        height: 1em; /* 20px */
+    }
+}
+
+/* Media Query for mobile screens */
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 7px; /* 1em = 6px, 6/16 = 37.5% */
+    }
+    .header {
+        width: 80%;
+        font-size: 0.8em; /* 56px */
+    }
+    .fire-container {
+        height: 5em;
+    }
+    .fire{
+        transform: scale(1.2);
+    }
+    .Waitlist-content{
+        font-size: 1em; /* 36px */
+    }
+    .box-description{
+        font-size:0.6em;
+    }
+    .email_input{
+        width: 100%;
+        padding: 0.75em;
+        border: solid 0.075em black; /* 1px */
+        font-size: 0.8em;
+    }
+    .button{
+        width: 70%;
+        padding: 0.3em;
+        font-size: 0.75em;
+    }
+    .button svg{
+        width: 1em; /* 20px */
+        height: 1em; /* 20px */
+    
+    }
+}
+
+.disabled {
+    pointer-events: none;
+  }
+
