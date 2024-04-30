@@ -83,7 +83,7 @@ export default function Waitlist() {
     <div>
       <Card className='Waitlist-box'>
         <div className="logo">
-          <img src="src\assets\Logo.svg" alt="waitlist" />
+          <img src="src\assets\Logo.svg" alt="logo" />
         </div>
         <CardHeader className="header">
           <CardTitle className='box-title'>
