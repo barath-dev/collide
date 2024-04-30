@@ -5,11 +5,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const WebSocket = require('ws');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://barathwaj:admin@cluster0.a5tznuy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
@@ -30,7 +31,7 @@ const Model = mongoose.model('user', waitlistSchema);
 app.use(bodyParser.json());
 
 // WebSocket server setup
-const wss = new WebSocket.Server({ port: 8002 }); // WebSocket server port
+const wss = new WebSocket.Server({ port: process.env.WEBSOCKET_PORT }); // WebSocket server port
 
 // WebSocket connection handler
 wss.on('connection', function connection(ws) {
@@ -86,6 +87,6 @@ app.get("/", async (req, res) => {
     }
 });
 
-app.listen(8080, () => {
+app.listen(process.env.SERVER_PORT, () => {
     console.log('server listening on port 8080')
 });
