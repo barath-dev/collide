@@ -39,10 +39,10 @@ const wss = new WebSocket.Server({ noServer:true}); // WebSocket server port
 
 // WebSocket connection handler
 wss.on('connection', function connection(ws) {
-    // Send initial count to the client
-    sendCountToClients();
 
     console.log('Client connected');
+    // Send initial count to the client
+    sendCountToClients();
     // Listen for changes in the database
     Model.watch().on('change', () => {
         // Send updated count to clients when there's a change
