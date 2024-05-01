@@ -11,6 +11,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use(bodyParser.json());
+
 const server = http.createServer(app);
 
 mongoose.connect(process.env.MONGO_URI, {
@@ -30,8 +32,6 @@ const waitlistSchema = new Schema({
 });
 
 const Model = mongoose.model('user', waitlistSchema);
-
-app.use(bodyParser.json());
 
 // WebSocket server setup
 const wss = new WebSocket.Server({ noServer:true}); // WebSocket server port
@@ -63,6 +63,7 @@ function sendCountToClients() {
 
 
 app.post("/submit", async (req, res) => {
+
     try {
         console.log(req.body);
         const { email } = req.body;
@@ -112,4 +113,14 @@ server.on('upgrade', function upgrade(request, socket, head) {
 
 server.listen(process.env.WEBSOCKET_PORT || 8002, () => {
     console.log('server listening on port 8002')
+});
+
+
+app.get("*", async (req, res) => {
+    try {
+        const count = await Model.countDocuments();
+        res.send({count});
+    } catch (error) {
+        res.send(error);
+    }
 });
