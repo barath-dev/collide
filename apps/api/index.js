@@ -82,17 +82,8 @@ app.post("/submit", async (req, res) => {
     }
 });
 
+
 app.get("/", async (req, res) => {
-    try {
-       res.send("Hello world!!!!");
-    } catch (error) {
-        res.send(error);
-    }
-}
-);
-
-
-app.get("/a", async (req, res) => {
     try {
         const count = await Model.countDocuments();
         res.send({count});
@@ -113,14 +104,4 @@ server.on('upgrade', function upgrade(request, socket, head) {
 
 server.listen(process.env.WEBSOCKET_PORT || 8002, () => {
     console.log('server listening on port 8002')
-});
-
-
-app.get("*", async (req, res) => {
-    try {
-        const count = await Model.countDocuments();
-        res.send({count});
-    } catch (error) {
-        res.send(error);
-    }
 });
