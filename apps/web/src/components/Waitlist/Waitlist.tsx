@@ -7,6 +7,7 @@ import { useState, useEffect, SetStateAction, useRef } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { Loader2 } from 'lucide-react';
 import Logo from "../../assets/Logo.svg";
+import Introanimation from '../Animation/Introanimation';
 
 
 export default function Waitlist() {
@@ -93,7 +94,12 @@ export default function Waitlist() {
   }
 
   return (
-    <div>
+    <>
+    <div className='ani'>
+    <Introanimation />
+    </div>
+
+    <div className='App'>
       <Card className='Waitlist-box'>
         <div className="logo">
           <img src={Logo} alt="logo" />
@@ -136,5 +142,6 @@ export default function Waitlist() {
         </CardContent>
       </Card>
     </div>
+    </>
   );
 }

@@ -7,12 +7,7 @@ function App() {
 
   return (
     <>
-    <div className='ani'>
-    <Introanimation />
-    </div>
-     <div className="App">
-     <Waitlist/>
-    </div>
+    <Waitlist />
     </>
    
   )
