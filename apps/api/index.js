@@ -31,7 +31,7 @@ const Model = mongoose.model('user', waitlistSchema);
 app.use(bodyParser.json());
 
 // WebSocket server setup
-const wss = new WebSocket.Server({ port: process.env.WEBSOCKET_PORT || 8002}); // WebSocket server port
+const wss = new WebSocket.Server({ url: "ws://collide-production.up.railway.app"}); // WebSocket server port
 
 // WebSocket connection handler
 wss.on('connection', function connection(ws) {

@@ -19,7 +19,7 @@ export default function Waitlist() {
 
   useEffect(() => {
     // Establish WebSocket connection when component mounts
-    const ws = new WebSocket('ws://localhost:8002'); // WebSocket server address
+    const ws = new WebSocket(`ws://collide-production.up.railway.app`); // WebSocket server address
 
     ws.onopen = () => {
       console.log('Connected to WebSocket server');
@@ -56,7 +56,7 @@ export default function Waitlist() {
       try {
         setButtonDisabled(true);
         setClassName('button disabled');
-        const response = await axios.post('http://localhost:8080/submit', { email });
+        const response = await axios.post(`http://collide-production.up.railway.app/submit`, { email });
         if(response.status===200){
           setEmail("");
         }else{
