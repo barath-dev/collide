@@ -101,7 +101,7 @@ app.get("/a", async (req, res) => {
     }
 });
 
-app.listen(process.env.SERVER_PORT || 8080,'0.0.0.0' ,() => {
+app.listen(process.env.PORT || 8080,'0.0.0.0' ,() => {
     console.log('server listening on port 8080')
 });
 
