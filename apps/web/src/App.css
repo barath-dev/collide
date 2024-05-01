@@ -2,3 +2,23 @@
   @tailwind components;
   @tailwind utilities;
 
+  .App{
+    background-image: url('./assets/zebra_bg.svg');
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+  }
+
+  .ani{
+      position: absolute;
+      top:0;
+      left:0;
+      bottom: 0;
+      right: 0;
+      background-color: white;
+      display: block;
+      animation: out forwards ease-in 1.8s;
+      z-index:10;
+  }

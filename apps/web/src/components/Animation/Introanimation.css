@@ -1,0 +1,117 @@
+.preloaderContainer{
+    position: absolute;
+    top:0;
+    left:0;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    display: block;
+    animation: out forwards ease-in 1.8s;
+    z-index:10;
+}
+
+.leftCircle, .rightCircle{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    background-color: black;
+    display: block;
+}
+
+@keyframes out{
+    0%{
+        display: block;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        display: none;
+    }
+}
+
+
+
+.leftCircle{
+    top: 50%;
+    left: -3.5%;
+    transform: translate(0, -50%);
+    animation: moveAndScale1 1.8s ease-in forwards infinite;
+    z-index:5;
+}
+
+.rightCircle{
+    top: 50%;
+    right: -3.5%;
+    transform: translate(0, -50%);
+    animation: moveAndScale2 1.8s ease-in forwards infinite;
+    z-index: 4;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+@keyframes moveAndScale1{
+    0%{
+        left: -3.5%;
+        transform: translate(0, -50%) scale(1);
+    }
+    20%{
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    80%{
+        left: 50%;
+        transform: translate(-50%, -50%) scale(100);
+    }
+    100%{
+        left: -3.5%;
+        transform: translate(-50%, -50%) scale(100);
+        display: none;  
+    }
+}
+
+@keyframes moveAndScale2{
+    0%{
+        right: -3.5%;
+        transform: translate(0, -50%) scale(1);
+    }
+    20%{
+        right: 50%;
+        transform: translate(50%, -50%) scale(1);
+    }
+    49%{
+        background-color: black;
+    }
+    50%{
+        right: 50%;
+        transform: translate(50%, -50%) scale(0);
+        background-color: white;
+    }
+    90%{
+        background-color: white;
+        right: 50%;
+        transform: translate(50%, -50%) scale(100);
+        z-index:6;
+    }
+    100%{
+        background-color: white;
+        right: -3.5%;
+        transform: translate(50%, -50%) scale(100);
+        z-index:6;
+        display: none;
+    }
+}
+
+@media (max-aspect-ratio: 1/1) {
+    .preloaderContainer{
+        top:0;
+        left:0;
+        bottom: 0;
+        right: 0;
+        transform: rotate(90deg);
+    }
+}
