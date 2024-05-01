@@ -62,6 +62,10 @@ function sendCountToClients() {
 }
 
 
+app.get("/newthing",(req,res)=>{
+    res.status(200).send("Hello World");
+})
+
 app.post("/submit", async (req, res) => {
     try {
         console.log(req.body);
