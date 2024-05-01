@@ -69,6 +69,7 @@ export default function Waitlist() {
         const response = await axios.post(`https://collide-test.up.railway.app/submit`, { email },{headers:headers});
         if(response.status===200){
           setEmail("");
+          setText('');
         }else{
           setText("Some error occured");
         }
