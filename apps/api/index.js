@@ -1,5 +1,5 @@
 const express = require('express');
-const app = express();
+const http = require('http');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
@@ -7,8 +7,11 @@ const WebSocket = require('ws') ;
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
+const app = express();
 app.use(cors());
 app.use(express.json());
+
+const server = http.createServer(app);
 
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -89,4 +92,14 @@ app.get("/", async (req, res) => {
 
 app.listen(process.env.SERVER_PORT || 8080, () => {
     console.log('server listening on port 8080')
+});
+
+server.on('upgrade', function upgrade(request, socket, head) {
+    wss.handleUpgrade(request, socket, head, function done(ws) {
+        wss.emit('connection', ws, request);
+    });
+});
+
+server.listen(process.env.WEBSOCKET_PORT || 8002, () => {
+    console.log('server listening on port 8002')
 });
