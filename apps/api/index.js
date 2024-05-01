@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const WebSocket = require('ws');
+const WebSocket = require('ws') ;
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
@@ -31,7 +31,7 @@ const Model = mongoose.model('user', waitlistSchema);
 app.use(bodyParser.json());
 
 // WebSocket server setup
-const wss = new WebSocket.Server({ port: process.env.WEBSOCKET_PORT }); // WebSocket server port
+const wss = new WebSocket.Server({ port: process.env.WEBSOCKET_PORT || 8002}); // WebSocket server port
 
 // WebSocket connection handler
 wss.on('connection', function connection(ws) {
@@ -87,6 +87,6 @@ app.get("/", async (req, res) => {
     }
 });
 
-app.listen(process.env.SERVER_PORT, () => {
+app.listen(process.env.SERVER_PORT || 8080, () => {
     console.log('server listening on port 8080')
 });
