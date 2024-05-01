@@ -6,6 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui
 import { useState, useEffect, SetStateAction, useRef } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { Loader2 } from 'lucide-react';
+import Logo from "../../assets/Logo.svg";
+
 
 export default function Waitlist() {
   const [email, setEmail] = useState('');
@@ -94,7 +96,7 @@ export default function Waitlist() {
     <div>
       <Card className='Waitlist-box'>
         <div className="logo">
-          <img src="src\assets\Logo.svg" alt="logo" />
+          <img src={Logo} alt="logo" />
         </div>
         <CardHeader className="header">
           <CardTitle className='box-title'>
