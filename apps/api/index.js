@@ -6,15 +6,17 @@ const Schema = mongoose.Schema;
 const WebSocket = require('ws') ;
 const bodyParser = require('body-parser');
 const { log } = require('console');
+const { triggerAsyncId } = require('async_hooks');
 require('dotenv').config();
 
-const app = express();
+const app = express();  
+
+
 app.use(cors());
 app.use(express.json());
 
 app.use(bodyParser.json());
 
-const server = http.createServer(app);
 
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -34,38 +36,10 @@ const waitlistSchema = new Schema({
 
 const Model = mongoose.model('user', waitlistSchema);
 
-// WebSocket server setup
-const wss = new WebSocket.Server({ noServer:true}); // WebSocket server port
-
-// WebSocket connection handler
-wss.on('connection', function connection(ws) {
-
-    console.log('Client connected');
-    // Send initial count to the client
-    sendCountToClients();
-    // Listen for changes in the database
-    Model.watch().on('change', () => {
-        // Send updated count to clients when there's a change
-        sendCountToClients();
-    });
-});
-
-// Function to send count to all connected clients
-function sendCountToClients() {
-    Model.countDocuments().then(count => {
-        wss.clients.forEach(client => {
-            if (client.readyState === WebSocket.OPEN) {
-                client.send(JSON.stringify({ count }));
-            }
-        });
-    }).catch(error => {
-        console.error('Error while getting document count:', error);
-    });
-}
 
 
 app.post("/submit", async (req, res) => {
-
+    
     try {
         console.log(req.body);
         const { email } = req.body;
@@ -93,17 +67,37 @@ app.get("/", async (req, res) => {
     }
 });
 
-
-app.listen(process.env.PORT || 8080,'0.0.0.0' ,() => {
+const server=app.listen(process.env.PORT || 8080,'0.0.0.0' ,() => {
     console.log('server listening on port 8080')
 });
 
-server.on('upgrade', function upgrade(request, socket, head) {
-    wss.handleUpgrade(request, socket, head, function done(ws) {
-        wss.emit('connection', ws, request);
-    });
-});
 
-server.listen(process.env.WEBSOCKET_PORT || 8002, () => {
-    console.log('server listening on port 8002')
-});
+    // WebSocket server setup
+    const wss = new WebSocket.Server({server});
+    
+    // WebSocket connection handler
+    wss.on('connection', function connection(ws) {
+    
+        console.log('Client connected');
+        // Send initial count to the client
+        sendCountToClients();
+        // Listen for changes in the database
+        Model.watch().on('change', () => {
+            // Send updated count to clients when there's a change
+            sendCountToClients();
+        });
+    });
+    
+    
+    // Function to send count to all connected clients
+    function sendCountToClients() {
+        Model.countDocuments().then(count => {
+            wss.clients.forEach(client => {
+                if (client.readyState === WebSocket.OPEN) {
+                    client.send(JSON.stringify({ count }));
+                }
+            });
+        }).catch(error => {
+            console.error('Error while getting document count:', error);
+        });
+    }
