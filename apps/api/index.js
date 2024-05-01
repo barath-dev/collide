@@ -31,7 +31,7 @@ const Model = mongoose.model('user', waitlistSchema);
 app.use(bodyParser.json());
 
 // WebSocket server setup
-const ws = new WebSocket.Server({ noServer:true}); // WebSocket server port
+const wss = new WebSocket.Server({ noServer:true}); // WebSocket server port
 
 // WebSocket connection handler
 wss.on('connection', function connection(ws) {
