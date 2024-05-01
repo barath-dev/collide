@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const WebSocket = require('ws') ;
 const bodyParser = require('body-parser');
+const { log } = require('console');
 require('dotenv').config();
 
 const app = express();
@@ -41,6 +42,7 @@ wss.on('connection', function connection(ws) {
     // Send initial count to the client
     sendCountToClients();
 
+    console.log('Client connected');
     // Listen for changes in the database
     Model.watch().on('change', () => {
         // Send updated count to clients when there's a change
@@ -82,7 +84,6 @@ app.post("/submit", async (req, res) => {
     }
 });
 
-
 app.get("/", async (req, res) => {
     try {
         const count = await Model.countDocuments();
@@ -91,6 +92,7 @@ app.get("/", async (req, res) => {
         res.send(error);
     }
 });
+
 
 app.listen(process.env.PORT || 8080,'0.0.0.0' ,() => {
     console.log('server listening on port 8080')
