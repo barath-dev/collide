@@ -62,10 +62,6 @@ function sendCountToClients() {
 }
 
 
-app.get("/newthing",(req,res)=>{
-    res.status(200).send("Hello World");
-})
-
 app.post("/submit", async (req, res) => {
     try {
         console.log(req.body);
@@ -86,6 +82,16 @@ app.post("/submit", async (req, res) => {
 });
 
 app.get("/", async (req, res) => {
+    try {
+       res.send("Hello world!!!!");
+    } catch (error) {
+        res.send(error);
+    }
+}
+);
+
+
+app.get("/a", async (req, res) => {
     try {
         const count = await Model.countDocuments();
         res.send({count});

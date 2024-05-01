@@ -19,26 +19,31 @@ export default function Waitlist() {
 
   useEffect(() => {
     // Establish WebSocket connection when component mounts
-    const ws = new WebSocket("wss://collide-production.up.railway.app");
-
-    ws.onopen = () => {
-      console.log('Connected to WebSocket server');
-    };
-
-    ws.onmessage =async (event) => {
-      const data = await JSON.parse(event.data);
-      if (data.count !== undefined) {
-        setUserCount(data.count);
-      }
-    };
-
-    ws.onclose = () => {
-      console.log('Disconnected from WebSocket server');
-    };
-
-    return () => {
-      ws.close();
-    };
+    try {
+      const ws =  new WebSocket("ws://collide-test.up.railway.app");
+      ws.onopen = () => {
+        console.log('Connected to WebSocket server');
+      };
+  
+      ws.onmessage =async (event) => {
+        const data = await JSON.parse(event.data);
+        if (data.count !== undefined) {
+          setUserCount(data.count);
+        }
+      };
+  
+   
+      ws.onclose = () => {
+        console.log('Disconnected from WebSocket server');
+      };
+  
+      return () => {
+        ws.close();
+      };
+    } catch (error) {
+      console.log('Error:', error);
+    }
+    
   }, []);
 
   const onChange = (e: { target: { value: SetStateAction<string>; }; }) => {
@@ -56,7 +61,12 @@ export default function Waitlist() {
       try {
         setButtonDisabled(true);
         setClassName('button disabled');
-        const response = await axios.post(`http://collide-production.up.railway.app/submit`, { email });
+        const headers = {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS'
+        };    
+
+        const response = await axios.post(`http://collide-test.up.railway.app/submit`, { email },{headers:headers});
         if(response.status===200){
           setEmail("");
         }else{
