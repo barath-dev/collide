@@ -20,7 +20,7 @@ export default function Waitlist() {
   useEffect(() => {
     // Establish WebSocket connection when component mounts
     try {
-      const ws =  new WebSocket("ws://collide-test.up.railway.app");
+      const ws =  new WebSocket("wss://collide-test.up.railway.app");
       ws.onopen = () => {
         console.log('Connected to WebSocket server');
       };
@@ -66,7 +66,7 @@ export default function Waitlist() {
           'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS'
         };    
 
-        const response = await axios.post(`http://collide-test.up.railway.app/submit`, { email },{headers:headers});
+        const response = await axios.post(`https://collide-test.up.railway.app/submit`, { email },{headers:headers});
         if(response.status===200){
           setEmail("");
         }else{
