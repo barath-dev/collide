@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import './Introanimation.css'
 
 export default function Introanimation() {
