@@ -20,7 +20,7 @@ export default function Waitlist() {
   useEffect(() => {
     // Establish WebSocket connection when component mounts
     try {
-      const ws =  new WebSocket("wss://collide-test.up.railway.app");
+      const ws =  new WebSocket("wss://collide-test.up.railway.app/");
       ws.onopen = () => {
         console.log('Connected to WebSocket server');
       };

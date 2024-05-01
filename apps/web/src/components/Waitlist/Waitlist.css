@@ -168,7 +168,7 @@ html {
 
 @media screen and (max-width: 1500px) {
     html {
-        font-size: 10px; /* 1em = 8px, 8/16 = 50% */
+        font-size: 8px; /* 1em = 8px, 8/16 = 50% */
     }
     .Waitlist-box{
         width: 80vw;
@@ -178,7 +178,7 @@ html {
 /* Media Query for tablet screens */
 @media screen and (max-width: 1200px) {
     html {
-        font-size: 9px; /* 1em = 8px, 8/16 = 50% */
+        font-size: 7px; /* 1em = 8px, 8/16 = 50% */
     }
     .Waitlist-box{
         width: 80vw;
@@ -188,7 +188,7 @@ html {
 /* Media Query for tablet screens */
 @media screen and (max-width: 768px) {
     html {
-        font-size: 8px; /* 1em = 8px, 8/16 = 50% */
+        font-size: 5px; /* 1em = 8px, 8/16 = 50% */
     }
     .Waitlist-box{
         justify-content: space-between;
@@ -228,7 +228,7 @@ html {
 /* Media Query for mobile screens */
 @media screen and (max-width: 480px) {
     html {
-        font-size: 7px; /* 1em = 6px, 6/16 = 37.5% */
+        font-size: 4px; /* 1em = 6px, 6/16 = 37.5% */
     }
     .header {
         width: 80%;
