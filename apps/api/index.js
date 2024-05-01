@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const WebSocket = require('ws');
+const WebSocket = require('ws').Server;
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
