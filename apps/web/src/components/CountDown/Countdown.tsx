@@ -1,25 +1,26 @@
-import './Countdown.css'
+import S from './Countdown.module.css'
 
 function Countdown() {
   return (
-    <>
-            <div className="flex flex-col element">
-            <span className="text-2xl font-bold">00</span>
-            <span className="text-xs">Days</span>
+    
+    <div className={S.container}>
+            <div className={S.element}>
+            <span className={S.timer}>00</span>
+            <span className={S.subtitle}>days</span>
             </div>
-            <div className="flex flex-col element">
-            <span className="text-2xl font-bold">00</span>
-            <span className="text-xs">Hours</span>
+            <div className={S.element}>
+            <span className={S.timer}>00</span>
+            <span className={S.subtitle}>hours</span>
             </div>
-            <div className="flex flex-col element">
-            <span className="text-2xl font-bold">00</span>
-            <span className="text-xs">Minutes</span>
+            <div className={S.element}>
+            <span className={S.timer}>00</span>
+            <span className={S.subtitle}>minutes</span>
             </div>
-            <div className="flex flex-col element">
-            <span className="text-2xl font-bold">00</span>
-            <span className="text-xs">Seconds</span>
+            <div className={S.element}>
+            <span className={S.timer}>00</span>
+            <span className={S.subtitle}>seconds</span>
             </div>
-    </>
+        </div>
   )
 }
 

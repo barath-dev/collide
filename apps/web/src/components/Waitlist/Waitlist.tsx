@@ -1,6 +1,6 @@
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
-import './Waitlist.css';
+import S from './Waitlist.module.css';
 import axios from 'axios';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { useState, useEffect, SetStateAction, useRef } from 'react';
@@ -14,7 +14,7 @@ export default function Waitlist() {
   const [email, setEmail] = useState('');
   const [userCount, setUserCount] = useState(0);
   const [buttonDisabled, setButtonDisabled] = useState(false);
-  const [className, setClassName] = useState('button');
+  const [className, setClassName] = useState(S.button);
   const [clicked, setClicked] = useState(false);
   const [text, setText] = useState('');
   const buttonRef=useRef<HTMLButtonElement>(null);
@@ -63,7 +63,7 @@ export default function Waitlist() {
     if (isValidEmail(email)) {
       try {
         setButtonDisabled(true);
-        setClassName('button disabled');
+        setClassName(S.buttonDisabled);
         const headers = {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS'
@@ -77,7 +77,7 @@ export default function Waitlist() {
           setText("Some error occured");
         }
         setButtonDisabled(false);
-        setClassName('button');
+        setClassName(S.button);
         console.log(response.data);
       } catch (error) {
         console.error('Error:', error);
@@ -95,37 +95,38 @@ export default function Waitlist() {
 
   return (
     <>
-    <div className='ani'>
+    <div className={S.animate}>
     <Introanimation />
     </div>
+    <>
 
-    <div className='App'>
-      <Card className='Waitlist-box'>
-        <div className="logo">
+    <div className={S.App}>
+      <Card className={S.Waitlistbox}>
+        <div className={S.logo}>
           <img src={Logo} alt="logo" />
         </div>
-        <CardHeader className="header">
-          <CardTitle className='box-title'>
-            <p> <span className='theme-font'>Something’s</span>  cooking </p>
+        <CardHeader className={S.header}>
+          <CardTitle className={S.boxTitle}>
+            <p> <span className={S.themeFont}>Something’s</span>  cooking </p>
           </CardTitle>
-          <div className="fire-container">
+          <div className={S.fireContainer}>
             <Player
-              className='fire'
+              className={S.fire}
               src="https://lottie.host/b00042d8-47f0-4adc-bf28-c91382ebadd9/rOhxjAuKus.json"
               loop
               autoplay
             ></Player>
           </div>
         </CardHeader>
-        <CardDescription className='box-description'>Be among the first to explore an innovative platform redefining how you engage with others. Prepare to dive into a realm of endless intrigue and unexpected connections, where every interaction unveils new mysteries. Secure your place now to become part of a groundbreaking experience.</CardDescription>
-        <CardContent className='Waitlist-content'>
-          <span className='theme-font'>Join our</span> waiting list<span className='theme-font'> to get updated asap</span>
+        <CardDescription className={S.boxDescription}>Be among the first to explore an innovative platform redefining how you engage with others. Prepare to dive into a realm of endless intrigue and unexpected connections, where every interaction unveils new mysteries. Secure your place now to become part of a groundbreaking experience.</CardDescription>
+        <CardContent className={S.WaitlistContent}>
+          <span className={S.themeFont}>Join our</span> waiting list<span className={S.themeFont}> to get updated asap</span>
         </CardContent>
-        <CardContent className='container'>
-          <Input type="email" placeholder="Email" className='email_input' onChange={onChange} onKeyDown={handleKeyDown} value={email} />
+        <CardContent className={S.container}>
+          <Input type="email" placeholder="Email" className={S.email_input} onChange={onChange} onKeyDown={handleKeyDown} value={email} />
           
-          <Button ref={buttonRef} className={className} onClick={handleSubmit} disabled={buttonDisabled} >
-            {buttonDisabled ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <>Join waitlist 
+          <Button ref={buttonRef} className={S.button} onClick={handleSubmit} disabled={buttonDisabled} >
+            {buttonDisabled ? <Loader2 className={S.loader} /> : <>Join waitlist 
               <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -136,12 +137,13 @@ export default function Waitlist() {
               </svg></>}
           </Button>
         </CardContent>
-        {!isValidEmail(email) && clicked && <div className="error">{text}</div>}
-        <CardContent className='user-count'>
+        {!isValidEmail(email) && clicked && <div className={S.error}>{text}</div>}
+        <CardContent className={S.userCount}>
           {userCount} USERS WAITING
         </CardContent>
       </Card>
     </div>
+    </>
     </>
   );
 }

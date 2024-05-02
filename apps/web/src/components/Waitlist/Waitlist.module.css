@@ -1,3 +1,9 @@
+@tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+
+
 html {
     font-size: 10.5px; /* 1em = 10px, 10/16 = 62.5% */
 }
@@ -6,16 +12,8 @@ html {
     padding:0;
 }
 
-.App{
-    background-image: url('../../assets/zebra_bg.svg');
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;  
-    align-items: center;
-  }
 
-  .ani{
+  .animate{
       position: absolute;
       top:0;
       left:0;
@@ -27,7 +25,33 @@ html {
       z-index:10;
   }
 
-.Waitlist-box{
+
+  @keyframes out {
+        0%{
+            display: block;
+        }
+        50%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 0;
+            display: none;
+        }
+    
+  }
+
+.App{
+    background-image: url('../../assets/zebra_bg.svg');
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    margin:auto;
+    position: relative;
+  }
+
+.Waitlistbox{
     color: black;
     background-color: white;
     width: 70vw;
@@ -57,20 +81,20 @@ html {
     height:7em;
 }
 
-.fire-container {
+.fireContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     height:7em;
     aspect-ratio: 1;
   }
-  .fire-container .fire {
+  .fireContainer .fire {
     transform: scale(1.4);
   }
 
 
 
-.box-title{
+.boxTitle{
     color: black;
     margin:0 auto;
     text-align: center;
@@ -80,7 +104,7 @@ html {
     font-size:2.3em; /* 56px */
 }
 
-.box-description{
+.boxDescription{
     width: 85%;;
     color: rgba(125, 125, 125, 1);
     margin: 0.6em; /* 6% */
@@ -90,11 +114,11 @@ html {
     line-height: 1.1em;
 }
 
-.theme-font{
+.themeFont{
     color: rgba(250, 0, 255, 1);
 }
 
-.Waitlist-content{
+.WaitlistContent{
     color: black;
     text-align: center;
     font-family: "Source Sans 3", sans-serif;
@@ -158,7 +182,7 @@ html {
 }
 
 
-.button svg {
+svg{
     width: 1.5em; /* 20px */
     height: 1.5em; /* 20px */   
 }
@@ -174,7 +198,7 @@ html {
 
 }
 
-.user-count{
+.userCount{
     margin: 1em;
     font-size: 0.9em;
     font-family: "Cousine", monospace;
@@ -187,11 +211,27 @@ html {
     color: red;
 }
 
+.loader {
+    margin-right: 0.5rem; /* mr-2 */
+    height: 2rem; /* h-4 */
+    width: 2rem; /* w-4 */
+    animation: spin 1s linear infinite; /* animate-spin */
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
 @media screen and (max-width: 1600px) {
     html {
         font-size: 10px; /* 1em = 8px, 8/16 = 50% */
     }
-    .Waitlist-box{
+    .WaitlistBox{
         width: 80vw;
     }
 }
@@ -201,7 +241,7 @@ html {
     html {
         font-size: 9px; /* 1em = 8px, 8/16 = 50% */
     }
-    .Waitlist-box{
+    .WaitlistBox{
         width: 80vw;
     }
 }
@@ -214,11 +254,11 @@ html {
     .Waitlist-box{
         justify-content: space-between;
     }
-    .header .box-title{
+    .boxTitle{
         width: 80%;
         font-size: 2em; /* 56px */
     }
-    .box-description{
+    .boxDescription{
         font-size: 0.7em;;
     }
     .container{
@@ -240,7 +280,7 @@ html {
         padding: 0.3em;
         font-size: 0.9em;
     }
-    .button svg{
+    svg{
         width: 1em; /* 20px */
         height: 1em; /* 20px */
     }
@@ -255,16 +295,16 @@ html {
         width: 80%;
         font-size: 0.8em; /* 56px */
     }
-    .fire-container {
+    .fireContainer {
         height: 5em;
     }
     .fire{
         transform: scale(1.2);
     }
-    .Waitlist-content{
+    .WaitlistContent{
         font-size: 1em; /* 36px */
     }
-    .box-description{
+    .boxDescription{
         font-size:0.6em;
     }
     .email_input{
@@ -278,7 +318,7 @@ html {
         padding: 0.3em;
         font-size: 0.75em;
     }
-    .button svg{
+    svg{
         width: 1em; /* 20px */
         height: 1em; /* 20px */
     

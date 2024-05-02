@@ -1,10 +1,10 @@
 .preloaderContainer{
-    position: absolute;
-    top:0;
-    left:0;
-    bottom: 0;
+    top: 0;
+    left: 0;
     right: 0;
-    background-color: white;
+    bottom: 0;
+    position:absolute;
+    background-color:white;
     display: block;
     animation: out forwards ease-in 1.8s;
     z-index:10;
@@ -108,10 +108,6 @@
 
 @media (max-aspect-ratio: 1/1) {
     .preloaderContainer{
-        top:0;
-        left:0;
-        bottom: 0;
-        right: 0;
         transform: rotate(90deg);
     }
 }

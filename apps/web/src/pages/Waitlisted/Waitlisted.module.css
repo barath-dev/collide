@@ -1,0 +1,295 @@
+
+html {
+    font-size: 10.5px; /* 1em = 10px, 10/16 = 62.5% */
+}
+*{
+    margin:0;
+    padding:0;
+    z-index:2;
+}
+
+
+
+    .animate{
+        position: absolute;
+        top:0;
+        left:0;
+        bottom: 0;
+        right: 0;
+        background-color: white;
+        display: block;
+        animation: out forwards ease-in 1.8s;
+        z-index:11;
+    }
+    @keyframes out 
+    { 
+        0%
+        {
+            display: block;
+        }
+        50%
+        {
+            opacity: 1;
+        }
+        100%
+        {
+            opacity: 0;
+            display: none;
+        }
+        
+    }
+
+.App{
+    background-image: url('../../assets/zebra_bg.svg');
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    margin:auto;
+  }
+
+
+
+
+.Waitlistbox{
+    color: black;
+    background-color: white;
+    width: 65vw;
+    height: max-content;
+    display: flex;
+    text-align: center; 
+    flex-direction: column;
+    align-items: center;
+    font-size: 2.4em; /* 24px */
+    padding: 1em 0;
+    position: relative;
+}
+
+.meteor1{
+    position: absolute;
+    width:10em;
+    right: 2%;
+    top: 2%;
+}
+.meteor2{
+position: absolute;
+width: 12em;
+bottom: 10%;
+left: 2%;
+}
+
+.meteor3{
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10em;
+    z-index:1;
+}
+
+    .logo{
+    width:5em;
+    height:1.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    align-items: last baseline;
+    margin-top:4em;
+    position: relative;
+}
+
+
+.boxTitle{
+    color: black;
+    margin:0 auto;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-weight: 1000;
+    letter-spacing: 1px;
+    font-size:2em; /* 56px */
+}
+
+.stars{
+    position: absolute;
+    left:-1.6em;
+    top:-1.8em;
+    width: 3.5em;
+}
+
+.button {
+    background-color: #000;
+    font-family: "Inter", sans-serif;
+    font-size: 0.8em; /* 16px */
+    font-weight: 700;
+    width: fit-content;
+    color: #fff;
+    border: none;
+    border-radius: 5em; /* 50px */
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8em 0.8em;
+    transition: all 0.3s ease-in-out;
+    margin-top: 2em;
+    margin-bottom: 3em;;
+}
+
+
+.button:hover {
+    background-color:rgba(250, 0, 255, 1);
+    color: #ffffff;
+    transform: scale(0.95);
+}
+.button:active{
+    background-color:rgb(125, 5, 128);
+    transform: scale(0.85);
+
+}
+
+.userCount{
+    margin: 1em;
+    font-size: 0.9em;
+    font-family: "Cousine", monospace;
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 2em;;
+}
+@media screen and (max-width: 1600px) {
+    html {
+        font-size: 10px; /* 1em = 8px, 8/16 = 50% */
+    }
+    .Waitlistbox{
+        width: 70vw;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    html {
+        font-size: 10px; /* 1em = 8px, 8/16 = 50% */
+    }
+    .Waitlistbox{
+        width: 80vw;
+    }
+    .meteor1{
+        width: 8em;
+    }
+    .meteor2{
+        width: 10em;
+    }
+    .boxTitle{
+        font-size: 1.8em; /* 56px */
+    }
+}
+
+
+/* Media Query for tablet screens */
+@media screen and (max-width: 1200px) {
+    html {
+        font-size: 9px; /* 1em = 8px, 8/16 = 50% */
+    }
+    .Waitlistbox{
+        width: 80vw;
+    }
+}
+
+/* Media Query for tablet screens */
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 8px; /* 1em = 8px, 8/16 = 50% */
+    }
+    .Waitlistbox{
+        justify-content: space-between;
+    }
+    .header{
+        width:max-content;
+        margin-top:2em;
+    }
+    .meteor1{
+        width: 6em;
+    }
+    .meteor2{
+        width: 8em;
+        bottom:2%;
+        left:0%;
+    }
+     .boxTitle{
+        font-size: 1.4em; /* 56px */
+    }
+    .stars{
+        width:2.5em;
+        left:-1em;
+        top:-1em;
+    }
+    .container{
+        flex-direction: column;
+        border: none;
+        gap: 0.5em;
+        margin: 0 auto;;
+        height: max-content;
+        width: 80%;
+    }
+
+}
+
+/* Media Query for mobile screens */
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 7px; /* 1em = 6px, 6/16 = 37.5% */
+    }
+    .boxTitle{
+        font-size: 0.78em;
+    }
+    .stars{
+        top:-0.2em;
+        left: -0.1em;
+        width:1.2em;
+
+    }
+    .meteor1, .meteor2{
+        display: none;
+    }
+    .meteor3{
+        display: block;
+    }
+    .button{
+        font-size: 0.6em;
+    }
+    
+}
+
+@media screen and (max-width: 375px) {
+    html {
+        font-size: 6px; /* 1em = 6px, 6/16 = 37.5% */
+    }
+    .boxTitle{
+        font-size: 0.7em;
+    }
+    .stars{
+        top:0em;
+        left: 0em;
+        width:1em;
+
+    }
+    .meteor1, .meteor2{
+        display: none;
+    }
+    .button{
+        font-size: 0.5em;
+    }
+    
+}
+
+.disabled {
+    pointer-events: none;
+  }
+

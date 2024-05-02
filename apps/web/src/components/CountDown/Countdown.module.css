@@ -1,0 +1,53 @@
+html{
+    font-size: 10px;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 30%;
+    justify-content: space-between;
+}
+
+.element{
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-family: "PT Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+}   
+
+.timer{
+    font-size:1.5em;
+    font-weight:700;
+}
+.subtitle{
+    font-size: 0.7em;
+    font-weight: 600;
+}
+
+
+@media screen and (max-width: 1024px){
+    .container{
+        width: 35%;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .container{
+        width: 40%;
+    }
+}   
+
+@media screen and (max-width: 440px){
+    .timer{
+        font-size: 1.5em;
+    }
+    .container{
+        width: 70%;
+    }
+}
