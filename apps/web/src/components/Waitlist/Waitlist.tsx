@@ -104,7 +104,7 @@ export default function Waitlist() {
         <CardContent className={S.container}>
           <Input type="email" placeholder="Email" className={S.email_input} onChange={onChange} onKeyDown={handleKeyDown} value={email} />
           
-          <Button ref={buttonRef} className={S.button} onClick={handleSubmit} disabled={buttonDisabled} >
+          <Button ref={buttonRef} className={className} onClick={handleSubmit} disabled={buttonDisabled} >
             {buttonDisabled ? <Loader2 className={S.loader} /> : <>Join waitlist 
               <svg
               xmlns="http://www.w3.org/2000/svg"

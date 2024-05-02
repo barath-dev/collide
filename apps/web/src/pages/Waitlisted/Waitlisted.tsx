@@ -9,9 +9,12 @@ import meteor1 from "../../assets/meteors1.png";
 import meteor2 from "../../assets/meteors2.png";
 import meteor3 from "../../assets/meteor3.png";
 import UserCount from '@/components/UserCount/UserCount'
+import { useNavigate } from 'react-router-dom'
+
+
 export default function Waitlisted() {
 
-  
+  const navigate = useNavigate();
 
 
   return (
@@ -37,12 +40,9 @@ export default function Waitlisted() {
           </CardTitle>
         </CardHeader>
             <Countdown />
-        <Button className={S.button}>
+        <Button className={S.button} onClick={()=>{navigate('/')}}> 
           Join Waitlist
         </Button>
-        {/* <CardContent className={S.userCount}>
-          {userCount} USERS WAITING
-        </CardContent> */}
         <CardContent className={S.userCount}>
             <UserCount />
         </CardContent>
