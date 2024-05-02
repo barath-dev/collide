@@ -1,5 +1,5 @@
 import Introanimation from '@/components/Animation/Introanimation'
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card'
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import Logo from '@/assets/Logo.svg'
 import S from'./Waitlisted.module.css'
 import { Button } from '@/components/ui/button'
@@ -8,6 +8,7 @@ import stars from "../../assets/stars.svg";
 import meteor1 from "../../assets/meteors1.png";
 import meteor2 from "../../assets/meteors2.png";
 import meteor3 from "../../assets/meteor3.png";
+import UserCount from '@/components/UserCount/UserCount'
 export default function Waitlisted() {
 
   
@@ -35,13 +36,16 @@ export default function Waitlisted() {
             <p> Collision expected to occur in</p>
           </CardTitle>
         </CardHeader>
-        <Countdown />
+            <Countdown />
         <Button className={S.button}>
           Join Waitlist
         </Button>
         {/* <CardContent className={S.userCount}>
           {userCount} USERS WAITING
         </CardContent> */}
+        <CardContent className={S.userCount}>
+            <UserCount />
+        </CardContent>
       </Card>
     </div>
     </>

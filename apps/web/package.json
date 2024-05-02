@@ -19,6 +19,7 @@
     "lucide-react": "^0.376.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-favicon": "^2.0.3",
     "react-lottie-player": "^2.0.0",
     "react-svg": "^16.1.34",
     "storybook": "^8.0.9",

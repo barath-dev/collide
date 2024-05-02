@@ -28,6 +28,9 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
+  react-favicon:
+    specifier: ^2.0.3
+    version: 2.0.3(react@18.2.0)
   react-lottie-player:
     specifier: ^2.0.0
     version: 2.0.0(react@18.2.0)
@@ -5222,6 +5225,16 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.2
+
+  /react-favicon@2.0.3(react@18.2.0):
+    resolution: {integrity: sha512-eKtog0JO29rxkSHwq48t9EtLLeLtL0YzJsWDrtGr30c/yRt6GQUgHZizjIVJ/24e/MAHKFZg5jVnca+lvcTSZA==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}

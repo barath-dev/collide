@@ -3,51 +3,27 @@ import { Input } from '../ui/input';
 import S from './Waitlist.module.css';
 import axios from 'axios';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
-import { useState, useEffect, SetStateAction, useRef } from 'react';
+import { useState,  SetStateAction, useRef } from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { Loader2 } from 'lucide-react';
 import Logo from "../../assets/Logo.svg";
 import Introanimation from '../Animation/Introanimation';
+import UserCount from '../UserCount/UserCount';
+import { useNavigate } from 'react-router-dom';
+
 
 
 export default function Waitlist() {
   const [email, setEmail] = useState('');
-  const [userCount, setUserCount] = useState(0);
-  const [buttonDisabled, setButtonDisabled] = useState(false);
   const [className, setClassName] = useState(S.button);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
   const [clicked, setClicked] = useState(false);
   const [text, setText] = useState('');
   const buttonRef=useRef<HTMLButtonElement>(null);
+  const navigate = useNavigate();
 
 
-  useEffect(() => {
-    // Establish WebSocket connection when component mounts
-    try {
-      const ws =  new WebSocket("wss://collide-test.up.railway.app/");
-      ws.onopen = () => {
-        console.log('Connected to WebSocket server');
-      };
   
-      ws.onmessage =async (event) => {
-        const data = await JSON.parse(event.data);
-        if (data.count !== undefined) {
-          setUserCount(data.count);
-        }
-      };
-  
-   
-      ws.onclose = () => {
-        console.log('Disconnected from WebSocket server');
-      };
-  
-      return () => {
-        ws.close();
-      };
-    } catch (error) {
-      console.log('Error:', error);
-    }
-    
-  }, []);
 
   const onChange = (e: { target: { value: SetStateAction<string>; }; }) => {
     setEmail(e.target.value);
@@ -57,6 +33,8 @@ export default function Waitlist() {
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return pattern.test(test);
   }
+
+
 
   const handleSubmit = async () => {
     setClicked(true);
@@ -73,6 +51,7 @@ export default function Waitlist() {
         if(response.status===200){
           setEmail("");
           setText('');
+          navigate('/waitlisted');
         }else{
           setText("Some error occured");
         }
@@ -118,7 +97,7 @@ export default function Waitlist() {
             ></Player>
           </div>
         </CardHeader>
-        <CardDescription className={S.boxDescription}>Be among the first to explore an innovative platform redefining how you engage with others. Prepare to dive into a realm of endless intrigue and unexpected connections, where every interaction unveils new mysteries. Secure your place now to become part of a groundbreaking experience.</CardDescription>
+        <CardDescription className={S.boxDescription}>Be among the first to explore an innovative platform redefining how you engage with others. Prepare to dive into a realm of endless <strong>intrigue</strong> and unexpected <strong>connections</strong>, where every interaction unveils new <strong>mysteries</strong>. Secure your place now to become part of a groundbreaking experience.</CardDescription>
         <CardContent className={S.WaitlistContent}>
           <span className={S.themeFont}>Join our</span> waiting list<span className={S.themeFont}> to get updated asap</span>
         </CardContent>
@@ -139,7 +118,7 @@ export default function Waitlist() {
         </CardContent>
         {!isValidEmail(email) && clicked && <div className={S.error}>{text}</div>}
         <CardContent className={S.userCount}>
-          {userCount} USERS WAITING
+          <UserCount />
         </CardContent>
       </Card>
     </div>
