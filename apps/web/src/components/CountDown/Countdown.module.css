@@ -18,6 +18,7 @@ html{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    line-height: 1em;
     transition: all 0.5s;
 }   
 
@@ -43,11 +44,14 @@ html{
     }
 }   
 
-@media screen and (max-width: 440px){
+@media screen and (max-width: 480px){
     .timer{
-        font-size: 1.5em;
+        font-size: 1em;
     }
     .container{
         width: 70%;
+    }
+    .element:nth-of-type(2){
+        color:white;
     }
 }

@@ -21,7 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Waitlist />} />
         <Route path="/waitlisted" element={<Waitlisted />} />
-        <Route path="*" element={<div>404 Not Found</div>} />
+        <Route path="*" element={<Waitlist/>} />
       </Routes>
     </Router>
     </>
